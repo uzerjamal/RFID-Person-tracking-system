@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -8,35 +9,31 @@ class Generate{
         String batchNumber = "E2005176806060261";
         int firstHalf = (int) (rn.nextInt(9999 - 1000) + 1000);
         String secondHalf = "";
-        for(int i=0; i<3; i++){
-            secondHalf+= (char)((int) rn.nextInt(90 - 65) + 65);
-        }
+        secondHalf+= (char)((int) rn.nextInt(90 - 65) + 65);
         String id = batchNumber + firstHalf + secondHalf;
+        return id;}
+    String[] generateId(int u){
+        String id[] = new String[u];
+        Random rn = new Random();
+        String batchNumber = "E2005176806060261";
+        String secondHalf = "";
+        for(int i=0; i<id.length; i++){
+            int firstHalf = (int) (rn.nextInt(9999 - 1000) + 1000);
+            for(int h = 0 ; h  <= id.length;h++){
+                secondHalf+= (char)((int) rn.nextInt(90 - 65) + 65);}
+                id[i] = batchNumber + firstHalf + secondHalf;
+                secondHalf="";
+        }
+   
         return id;
     }
-
-    int readerNumber(){
-        Random rn = new Random();
-        return (int)(rn.nextInt(5));
-    }
-
-    String time(){
-        Date objDate = new Date();
-        String strDateFormat = "hh:mm:ss a dd-MM-yyyy";
-        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
-
-        return objSDF.format(objDate);
-    }
 }
-
-class GenerateTag{
+class java{
     public static void main(String[] args){
         Generate tag = new Generate();
-        for(int i=0; i<20; i++){
-            String generatedTag = tag.generateId();
-            int readerNum = tag.readerNumber();
-            String time = tag.time();
-            System.out.println(generatedTag + "\t" + readerNum + "\t" + time);
-        }
-    }
-}
+       String generatedTag1[]=new String[5];
+       String[] id = tag.generateId(5);
+for(int l = 0 ; l <5 ; l ++){
+            System.out.println(id[l] );}
+}        }
+    
