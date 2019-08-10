@@ -52,12 +52,5 @@ class GenerateTag{
         System.out.println("=====");
         for(int i=0; i<5; i++)
             System.out.println(id[i] + " " + tag.readerNumber() + " " + tag.time());
-        
-        //for(int i=0; i<20; i++){
-            //String generatedTag = tag.generateId();
-            //int readerNum = tag.readerNumber();
-            //String time = tag.time();
-            //System.out.println(generatedTag + "\t" + readerNum + "\t" + time);
-        //}
     }
 }
