@@ -84,7 +84,7 @@ String time()
       int sec = r2.nextInt((60-0)+1)+0;
     second = String.valueOf(sec);
       minute =  String.valueOf(min);
-       hour= String.valueOf(h);
+       hour= String.valueOf(hr);
       String totimeString = hour+":"+minute+":"+second;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
   LocalDateTime localDate = LocalDateTime.now();
