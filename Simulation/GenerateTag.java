@@ -75,9 +75,9 @@ int generateReaderNumber()
       }
 String time()
       {
-         String hour="null";
-      String minute ="null";
-      String second ="null";
+         String hour="";
+      String minute ="";
+      String second ="";
       Random r2 = new Random();
       int hr = r2.nextInt((13-8)+1)+8;
       int min = r2.nextInt((60-0)+1)+0;
