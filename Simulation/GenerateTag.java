@@ -5,7 +5,39 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.sql.*;
 
+class Database{
+ private String user = "uzerjamal";
+ private String pass = "zxcvb321"; //TODO ask password at run time to increase security
+ private String dbDriver = "jdbc:mysql://db4free.net:3306/rfidproj";
+ private Connection conn = null;
+
+ void connect(){
+ try {
+ conn = DriverManager.getConnection(dbDriver, user, pass);
+ System.out.println("connected");
+ } catch (SQLException ex) {
+ System.out.println("SQLException: " + ex.getMessage());
+ }
+ }
+
+ void addUnallocatedTags(String[] tag){
+ Statement stmt = null;
+ for(int i = 0; i<tag.length; i++){
+ try {
+ stmt = conn.createStatement();
+ stmt.executeUpdate("INSERT INTO Unallocated_Tags (TagID) VALUES ('" + tag[i] + "')");
+ }
+ catch (SQLException ex){
+ System.out.println("SQLException: " + ex.getMessage());
+ System.out.println("SQLState: " + ex.getSQLState());
+ System.out.println("VendorError: " + ex.getErrorCode());
+ }
+ }
+ System.out.println("Inserted values into the table Unallocated_Tags");
+ }
+}
 class Tag
 {
    private String[] generateTags(int numOfId)
@@ -47,16 +79,17 @@ String time()
       String j ="null";
       String k ="null";
       Random r2 = new Random();
-      int h = r2.nextInt((13-8)+1)+8;
+      int hr = r2.nextInt((13-8)+1)+8;
       int min = r2.nextInt((60-0)+1)+0;
       int sec = r2.nextInt((60-0)+1)+0;
-      j = String.valueOf(sec);
-      k =  String.valueOf(min);
-      i = String.valueOf(h);
+    second = String.valueOf(sec);
+      minute =  String.valueOf(min);
+       hour= String.valueOf(h);
+      String totimeString = hour+":"+minute+":"+second;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
   LocalDateTime localDate = LocalDateTime.now();
          
-      return (i+":"+j+":"+k+"  "+dtf.format(localDate));
+      return (totimeString+dtf.format(localDate));
 
       }
     }
