@@ -9,3 +9,4 @@
 4. Constants should be all caps.
   ex: PI, TIME etc
   
+5. One source file should only contain one class

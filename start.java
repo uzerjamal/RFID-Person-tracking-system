@@ -12,5 +12,6 @@ class start{
         Database db = new Database();
         db.connect();
         db.addUnallocatedTags(id);
+        db.addStudentRecord("5A", 25, "Legolas", "Wood Elves");
     }
 }

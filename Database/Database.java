@@ -1,10 +1,12 @@
 package database;
 
+import java.util.Calendar;
+import java.util.Random;
 import java.sql.*;
 
 public class Database{
     private String user = "uzerjamal";
-    private String pass = "zxcvb321";   //TODO ask password at run time to increase security
+    private String pass = "zxcvb321";   //TODO ask password at run time(in constructor) to increase security
     private String dbDriver = "jdbc:mysql://db4free.net:3306/rfidproj";
     private Connection conn = null;
 
@@ -33,12 +35,20 @@ public class Database{
         System.out.println("Inserted values into the table Unallocated_Tags");
     }
 
-    /*public void addStudentRecord(String studentClass, int rollNo, String studentName, String parentName){
+    //TODO: Ensure that the generated ID doesn't already exist.
+    public String generateParentId(){
+        Random rn = new Random();
+        return Calendar.getInstance().get(Calendar.YEAR) + String.valueOf(rn.nextInt(99999));
+    }
+    
+    public void addStudentRecord(String studentClass, int rollNo, String studentName, String parentName){
         Statement stmt = null;
+        String insertQuery = String.format("INSERT INTO Student_Details " +
+        "(Class, Roll_no, Student_name, Parent_name, Parent_Id) " +
+        "VALUES ('%s', %s, '%s', '%s', '%s');", studentClass, rollNo, studentName, parentName, generateParentId());
         try {
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO Student_Details (Class, Roll_no, Student_name, Tag_Id, Parent_name, Parent_Id) 
-                                VALUES ('" + tag[i] + "')"); //TODO
+            stmt.executeUpdate(insertQuery);
         }
         catch (SQLException ex){
             System.out.println("SQLException: " + ex.getMessage());
@@ -46,6 +56,4 @@ public class Database{
             System.out.println("VendorError: " + ex.getErrorCode());
         }
     }
-    System.out.println("Inserted values into the table Student Details");
-    }*/
 }
