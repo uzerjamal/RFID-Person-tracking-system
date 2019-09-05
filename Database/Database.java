@@ -54,6 +54,7 @@ public class Database{
         sql = "UPDATE Student_Details SET Tag_Id='" + tag +"' WHERE Student_name='"+ studentName +"' AND Class='"+ studentClass + "'";
         try{
             stmt.executeUpdate(sql);
+            stmt.executeUpdate("DELETE FROM Unallocated_Tags WHERE TagID = '"+ tag +"'");
         }
         catch(SQLException ex){
             System.out.println(ex);

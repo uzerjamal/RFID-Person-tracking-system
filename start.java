@@ -13,6 +13,6 @@ class start{
         db.connect();
         //db.addUnallocatedTags(id);
         //db.addStudentRecord("5A", 25, "Legolas", "Wood Elves");
-        //db.assignTag("5", "Frodo Beggins");
+        db.assignTag("5A", "Legolas");
     }
 }
