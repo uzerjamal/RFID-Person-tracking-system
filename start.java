@@ -11,7 +11,8 @@ class start{
         System.out.println(id[i] + " " + tag.generateReaderNumber() + " " + tag.time());
         Database db = new Database();
         db.connect();
-        db.addUnallocatedTags(id);
-        db.addStudentRecord("5A", 25, "Legolas", "Wood Elves");
+        //db.addUnallocatedTags(id);
+        //db.addStudentRecord("5A", 25, "Legolas", "Wood Elves");
+        db.assignTag("5A", "Legolas");
     }
 }
